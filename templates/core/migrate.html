@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Migrar Datos{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Migrar Datos</h1>
+
+<form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {% csrf_token %}
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="source_db">
+            Base de datos de origen
+        </label>
+        <select name="source_db" id="source_db" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="mysql">MySQL</option>
+            <option value="mongodb">MongoDB</option>
+            <option value="cassandra">Cassandra</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="target_db">
+            Base de datos de destino
+        </label>
+        <select name="target_db" id="target_db" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="mongodb">MongoDB</option>
+            <option value="cassandra">Cassandra</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="table_name">
+            Tabla/Colección
+        </label>
+        <input type="text" name="table_name" id="table_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            Migrar
+        </button>
+    </div>
+</form>
+{% endblock %}
+
